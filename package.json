@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.11.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "daisyui": "^5.0.28",
+    "mqtt": "^5.13.0",
+    "nuxt": "^3.16.2",
+    "nuxt-bootstrap-icons": "^2.1.2",
+    "pinia": "^3.0.2",
+    "tailwindcss": "^4.1.4",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
