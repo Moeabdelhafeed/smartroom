@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="/image.png" >
         <div class="container mx-auto p-4 relative">
         <div class="flex">
          <h1 class="text-3xl font-bold mb-5"> Smartroom</h1>
