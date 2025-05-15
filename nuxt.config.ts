@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     head:{
       link:[
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css' },
+          { rel: 'icon', type: 'image/x-icon', href: '/smartroom/favicon.ico' }
       ],
       title: 'Smart Room',
     }
