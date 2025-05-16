@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "gh-pages -d dist"
+   "deploy": "gh-pages -d .output/public"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.11.0",
