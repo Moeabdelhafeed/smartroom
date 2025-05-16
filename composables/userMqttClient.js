@@ -20,7 +20,7 @@ const $router = useRouter()
 
 const connect = ({ username, password, topic }) => {
   return new Promise((resolve, reject) => {
-    const url = `wss://f81fe19a2a0d48b69330dd2213f50a60.s1.eu.hivemq.cloud:8884/mqtt` // Replace with your MQTT broker URL lik this: wss://{YOUR CLOUND URL HIVEMQ}:8884/mqtt
+    const url = `wss://{YOUR CLOUND URL HIVEMQ}:8884/mqtt` // Replace with your MQTT broker URL lik this: wss://{YOUR CLOUND URL HIVEMQ}:8884/mqtt
     
     const mqttClient = mqtt.connect(url, {
       username,
