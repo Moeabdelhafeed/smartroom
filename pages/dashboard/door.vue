@@ -37,20 +37,21 @@
 </p>
 
   <div class="flex flex-col items-center mt-8">
-  <label class="mb-2 font-semibold">Open door automatically on gas detection</label>
-  <input
-    type="checkbox"
-    @change="toggleGasDoor($event.target.checked)"
-    v-model="useGasDoor"
-    class="toggle toggle-secondary"
-  />
-  <p v-if="useGasDoor" class="mt-2 text-green-400">
-    The door will open automatically on gas detection
-  </p>
-  <p v-else class="mt-2 text-red-400">
-    The door will not open automatically on gas detection
-  </p>
-</div>
+      <label class="mb-2 font-semibold">Open door automatically on gas detection</label>
+      <input
+        type="checkbox"
+        @change="toggleGasDoor($event.target.checked)"
+        v-model="useGasDoor"
+        class="toggle toggle-secondary"
+        :disabled="isOpen && doorOpenedManually"
+      />
+      <p v-if="useGasDoor" class="mt-2 text-green-400">
+        The door will open automatically on gas detection
+      </p>
+      <p v-else class="mt-2 text-red-400">
+        The door will not open automatically on gas detection
+      </p>
+    </div>
    <form @submit.prevent="setNewPassword" class="form-control   p-8 w-full max-w-sm 	 rounded-xl  mx-auto " >
        
         <label class="label">
@@ -82,40 +83,34 @@
 
   </div>
 </template>
-
 <script setup>
-
-const {isOpen, password} = storeToRefs(useDoorStore())
-const {alarm} = storeToRefs(useGasStore())
-const {useGasDoor} = storeToRefs(useGasDoorStore())
+const { isOpen, password } = storeToRefs(useDoorStore())
+const { alarm } = storeToRefs(useGasStore())
+const { useGasDoor } = storeToRefs(useGasDoorStore())
 
 const newPassword = ref("")
+const doorOpenedManually = ref(false)
 
-
-const {publish} = useMqttClient()
-const {topic} = storeToRefs(useMqttStore())
+const { publish } = useMqttClient()
+const { topic } = storeToRefs(useMqttStore())
 const onClickOpen = ref(true)
 
-
-
 const openDoor = async () => {
+  doorOpenedManually.value = true
   setTimeout(() => {
     onClickOpen.value = false
-  }, 3000)
-    publish(topic.value , 'door/open')
+    doorOpenedManually.value = false // Reset after the door auto-closes
+  }, 3500)
+  publish(topic.value, 'door/open')
 }
 
-
-
 const toggleGasDoor = (value) => {
-  publish(topic.value, value ? 'gas/door/on' : 'gas/door/off');
+  publish(topic.value, value ? 'gas/door/on' : 'gas/door/off')
 }
 
 const setNewPassword = async () => {
-    publish(topic.value , 'door/' + newPassword.value)
+  publish(topic.value, 'door/' + newPassword.value)
 }
-
-
 </script>
 
 <style scoped>
