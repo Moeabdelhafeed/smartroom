@@ -1,58 +1,76 @@
-# SmartRoom Project
+# Smart Room with ESP32 🔐🌡️💨
 
-This is the official repository for the **SmartRoom** project.
+Welcome to the Smart Room project! This is a web-integrated smart room system powered by ESP32. It combines sensors, a web dashboard, and automation to create a safer, smarter environment.
 
-✅ The project is **completed** and explained in detail in this Medium article: [Read the full article here](https://testing.com)
+## 🔗 Full Tutorial
 
----
+👉 Check out the complete guide on Medium: [How to Build a Web-Integrated Smart Room with ESP32](https://medium.com/@almormohammad939/how-to-build-a-web-integrated-smart-room-with-esp32-XXXXX)
 
-## ⚙️ Configuration Guide
+This tutorial includes everything you need:
+- Step-by-step hardware setup
+- Wiring diagram
+- Web dashboard integration using MQTT (HiveMQ)
+- Full code walkthrough for ESP32 and Nuxt.js dashboard
 
-To run this project with your own **HiveMQ Cloud** setup, follow these simple steps:
+## 🚀 Features
 
-### 1. Set up your HiveMQ Cloud Cluster
-- Create an account at [HiveMQ Cloud](https://www.hivemq.com/mqtt-cloud-broker/).
-- Set up your cluster and note your **broker URL**, **port**, **username**, and **password**.
+- **Keypad + LCD** access system
+- **MQ-2 Gas Sensor** triggers fan & auto-unlock
+- **Temperature & Humidity monitoring** with DHT11
+- **Real-time Web Dashboard** with MQTT
+- **Servo Motor door control**
+- **Fan activation with Relay**
 
-### 2. Configure the Arduino Code
-Navigate to:
+## 🧰 Components Used
+
+- ESP32 Dev Board
+- 3x4 Keypad
+- LCD1602 (I2C)
+- MQ-2 Gas Sensor
+- DHT11 Sensor
+- SG90 Servo Motor
+- Relay Module (for Fan)
+- LEDs, Jumper wires, Resistors, Breadboard
+
+## 📦 Code & Dashboard
+
+- ESP32 Code: `smartroom.ino`
+- Web App (Nuxt.js): `/web-dashboard` folder
+
+> Replace placeholders in code with your HiveMQ and WiFi credentials.
+
+## 🛠️ Quick Start
+
+```bash
+# Web Dashboard Setup
+npm install
+npm run dev
 ```
-smartroom/smartroom.ino
-```
-
-Update the following values in your code:
 
 ```cpp
-const char* ssid = "YOUR WIFI NAME";
-const char* password = "YOUR WIFI PASSWORD";
-const char* mqtt_server = "YOUR MQTT URL HIVEMQ";
-const int mqtt_port = 8883;
-const char* mqtt_username = "YOUR HIVEMQ CLOUD CREDENTIAL USERNAME";
-const char* mqtt_password = "YOUR HIVEMQ CLOUD CREDENTIAL PASSWORD";
+// Arduino Setup
+// Update your WiFi and MQTT credentials
+const char* ssid = "YOUR_WIFI";
+const char* password = "YOUR_PASSWORD";
 ```
 
-### 3. Configure the Nuxt App (MQTT Client)
-Navigate to:
-```
-smartroom/compasables/useMqttClient.js
-```
+## 📡 MQTT Integration (HiveMQ Cloud)
 
-Change the MQTT URL line to use your own HiveMQ cloud instance:
+- Broker: HiveMQ Cloud
+- Uses `PubSubClient` (ESP32) & Websockets (Web App)
 
-```js
-const url = `wss://{YOUR_CLOUD_URL}.s1.eu.hivemq.cloud:8884/mqtt`
-```
+## 🖥 Live Demo (Optional)
 
-Example:
-```js
-const url = `wss://f81fe19a2a0d48b69330dd2213f50a60.s1.eu.hivemq.cloud:8884/mqtt`
-```
+You can deploy the web dashboard to GitHub Pages easily.
+
+## 🙌 Contribution
+
+Feel free to fork, explore, or contribute ideas!
+
+## 📄 License
+
+MIT License
 
 ---
 
-## ✅ Done!
-That’s it! You’re now ready to use the SmartRoom project with your own HiveMQ Cloud setup.
-
-If you run into issues, refer to the [Medium article](https://testing.com) for troubleshooting and additional insights.
-
----
+✨ Inspired and built with love using ESP32 + Nuxt + MQTT + Sensors
