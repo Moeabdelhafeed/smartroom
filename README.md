@@ -1,75 +1,58 @@
-# Nuxt Minimal Starter
+# SmartRoom Project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is the official repository for the **SmartRoom** project.
 
-## Setup
+✅ The project is **completed** and explained in detail in this Medium article: [Read the full article here](https://testing.com)
 
-Make sure to install dependencies:
+---
 
-```bash
-# npm
-npm install
+## ⚙️ Configuration Guide
 
-# pnpm
-pnpm install
+To run this project with your own **HiveMQ Cloud** setup, follow these simple steps:
 
-# yarn
-yarn install
+### 1. Set up your HiveMQ Cloud Cluster
+- Create an account at [HiveMQ Cloud](https://www.hivemq.com/mqtt-cloud-broker/).
+- Set up your cluster and note your **broker URL**, **port**, **username**, and **password**.
 
-# bun
-bun install
+### 2. Configure the Arduino Code
+Navigate to:
+```
+smartroom/smartroom.ino
 ```
 
-## Development Server
+Update the following values in your code:
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```cpp
+const char* ssid = "YOUR WIFI NAME";
+const char* password = "YOUR WIFI PASSWORD";
+const char* mqtt_server = "YOUR MQTT URL HIVEMQ";
+const int mqtt_port = 8883;
+const char* mqtt_username = "YOUR HIVEMQ CLOUD CREDENTIAL USERNAME";
+const char* mqtt_password = "YOUR HIVEMQ CLOUD CREDENTIAL PASSWORD";
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+### 3. Configure the Nuxt App (MQTT Client)
+Navigate to:
+```
+smartroom/compasables/useMqttClient.js
 ```
 
-Locally preview production build:
+Change the MQTT URL line to use your own HiveMQ cloud instance:
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```js
+const url = `wss://{YOUR_CLOUD_URL}.s1.eu.hivemq.cloud:8884/mqtt`
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Example:
+```js
+const url = `wss://f81fe19a2a0d48b69330dd2213f50a60.s1.eu.hivemq.cloud:8884/mqtt`
+```
+
+---
+
+## ✅ Done!
+That’s it! You’re now ready to use the SmartRoom project with your own HiveMQ Cloud setup.
+
+If you run into issues, refer to the [Medium article](https://testing.com) for troubleshooting and additional insights.
+
+---
