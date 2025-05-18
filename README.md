@@ -4,7 +4,7 @@ Welcome to the Smart Room project! This is a web-integrated smart room system po
 
 ## 🔗 Full Tutorial
 
-👉 Check out the complete guide on Medium: [How to Build a Web-Integrated Smart Room with ESP32](https://medium.com/@almormohammad939/how-to-build-a-web-integrated-smart-room-with-esp32-XXXXX)
+👉 Check out the complete guide on Medium: [How to Build a Web-Integrated Smart Room with ESP32](https://medium.com/@almormohammad939/how-to-build-a-web-integrated-smart-room-with-esp32-1e6dcbfded6e)
 
 This tutorial includes everything you need:
 - Step-by-step hardware setup
